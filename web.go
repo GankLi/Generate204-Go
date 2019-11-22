@@ -3,15 +3,13 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"os"
 	"runtime"
 )
 
 func main() {
-	http.HandleFunc("/", hello)
+	//http.HandleFunc("/", hello)
 	http.HandleFunc("/generate_204", generate204)
-	bind := fmt.Sprintf("%s:%s", os.Getenv("HOST"), os.Getenv("PORT"))
-	err := http.ListenAndServe(bind, nil)
+	err := http.ListenAndServe(":80", nil)
 	if err != nil {
 		panic(err)
 	}
